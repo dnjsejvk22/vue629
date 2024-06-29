@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h3>meowmeowmeowmeow</h3>
+    <h1>{{ ka }}</h1>
+HelloWorld.vue Installed CLI Plugins <br>
+HelloWorld.vue Essential Links <br>
+HelloWorld.vue cosystem <br>
   </div>
 </template>
 
@@ -9,10 +11,12 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    ka: String
   }
 }
 </script>
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

@@ -1,94 +1,112 @@
 <template>
-  <div>
-  <img alt="Vue logo" src="./assets/images/meow.jpg" width="300" height="300">
-  <Hello msg="냥희진 왈 : 오늘의 날씨는 더움."/>
-  <p></p>
-  종: {{ kind }}<br>
-  카운트 :{{ count }}<p></p>
-
+  <div class="container">
+     <img id="cat" alt="Vue logo" src="./assets/images/meow2.jpg" width="300" height="300"><br><br>
+     <div><p id="titleText">"여자가 담배를 핀다는건 그만큼 힘들다는거야.."</p></div><br>
+     <input type="text" v-model="todoText" size=15 @keyup.enter="insertTodo">
+     <button id="button" @click="insertTodo">todo</button>
+     <br><br><hr color="black" size="3">
   <h3>고양이 리스트</h3>
-  <hr color="#276e7a" size="3">
+  <hr color="black" size="3"><br>
+  <todotest/>
+  <Hello ka="~폭스걸 웰컴~"></Hello>
+  <div>
 
-  <BoardTest/>
+        Test.vue 저자:{{name}}
+        <div v-for="(item) in todolist" :key="item.id" style="color: black;">
+          {{ item.checked }} &nbsp;
+          {{ item.id }} &nbsp;
+          {{ item.text }} 
+    </div>
+</div>
+
+
+
   </div>
+  <HelloWorld />
 </template>
 
 <script>
-// import Hello from './components/HelloWorld.vue'
-import BoardTest from './components/BoardTest.vue'
+import HelloWorld from './components/HelloWorld.vue'
+// import BoardTest from './components/BoardTest.vue'
 
 export default {
   name: 'App',
-  components: {
-    BoardTest,
-  },
+  components:{HelloWorld},
+
   data() {
     return {
       kind: '로드캣(코리안숏헤어)',
-      count : 1004,
-      info: '클릭클릭클릭',
+      todoText : 'L.O.V.E',
+      count : 1,
 // 게스트 guest:[name,age,title]
-      guest:[
-      {name:'meow',age:3,title:'coco'},
-      {name:'meooow',age:6,title:'장군이'},
-      {name:'냥',age:7,title:'juhaneeee'}
+      todolist:[
+      {id:1, name:'meow',text:'hot',checked:false},
+      {id:2, name:'oh',text:'cool',checked:true}
       ],
     }
   },
+  methods :{
+    // export default {
+    //   name: 'Todotest',
+    //   data(){
+    //     return{
+    //       lotto: 1,
+    //     }
+    //   }
+    // },
+    insertTodo(){
+      // alert("똑바로 작성하시오--+");
+      var max = this.todolist.reduce(function(a,b){
+        console.log("a=",a);
+        return a>b ? a : b.id ;
+      });
 
-  methods:{
-    suIncrement(){
-      this.count = this.count+1;
-      this.info = this.count;
+      this.todolist.push({
+        id:max+1,
+        text:this.todoText,
+        checked:false
+      });
+      this.todoText = ''
     },
-    suDecrement(){
-      this.count = this.count-1;
-      this.info = this.count;
+    deleteTodo(){
+      var max = this.todolist.reduce(function(a,b){
+        console.log("a=",a);
+        return a>b ? a : b.id ;
+      })
+      alert('todotest.vue deleteTodo 함수');
     },
-
+    toggleCheakbox(){
+      console.log('todotest.vue toggleCheakbox 함수')
+      alert('todotest.vue toggleCheakbox 함수')
+    
+    }
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #276e7a;
+#cat
+{ 
+  border: 3px
+  solid black
+  
 }
 
-#button {
-  background-color: #276e7a;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 16px 2px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* 배경색 변화를 부드럽게 만듦 */
+#titleText{
+font-size: large;
 }
 
-#button:hover {
-  background-color: #3a8999; /* 마우스를 올렸을 때 색상 변경 */
+.container{
+  background-color: #00000018;
+  padding: 20px;
+  width: 400px;
 }
 
-#index {
-  background-color: #f0f0f0;
-  padding: 10px;
-
-  border-radius: 5px;
-}
-
-hr {
-  border-color: #ffffff;
-  margin-top: 5px;
-  margin-bottom: 5px;
+#button{
+  background-color: black;
+  color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 </style>
