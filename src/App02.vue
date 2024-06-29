@@ -1,0 +1,28 @@
+<template>
+  <img alt="Vue logo" src="./assets/images/meow2.jpg" width="300" height="300">
+  <Hello msg="냥희진 왈 : 오늘의 날씨는 더움."/>
+
+  <h3>testing 쉬는시간</h3>
+  <hr color="#276e7a" size="3">
+</template>
+
+<script>
+import Hello from './components/HelloWorld.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Hello
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #276e7a;
+}
+</style>
